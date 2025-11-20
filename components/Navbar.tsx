@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X, ShoppingBag, User } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Menu, X, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar: React.FC = () => {
@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,63 +20,81 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Shop', path: '/shop' },
-    { name: 'Services', path: '/services' },
-    { name: 'About', path: '/' }, 
+    { name: 'About', path: '/services' },
+    { name: 'Service', path: '/services' },
+    { name: 'Projects', path: '/shop' },
+    { name: 'Feedbacks', path: '/services' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-4' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <Link to="/" className={`text-2xl font-serif font-bold tracking-wider ${isScrolled ? 'text-primary' : 'text-white'}`}>
-              LUNERA
+    <>
+      {/* Top Bar */}
+      <div className="bg-primary h-1 w-full" />
+      
+      <nav
+        className={`sticky top-0 z-50 border-b border-[#e8ded0] transition-all duration-300 ${
+          isScrolled ? 'bg-[#f9f6f1]/95 backdrop-blur-sm shadow-sm' : 'bg-[#f9f6f1]'
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex justify-between items-center min-h-[72px]">
+            <Link to="/" >
+              <img
+              src="lunora-logo.png"
+              className="h-28 w-40"
+              />
             </Link>
-          </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`text-sm font-medium uppercase tracking-widest hover:text-secondary transition-colors ${isScrolled ? 'text-gray-800' : 'text-white'}`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            
-            <div className="flex items-center gap-4 border-l border-gray-300/30 pl-6 ml-2">
-              <button className={`p-2 rounded-full hover:bg-secondary/20 transition ${isScrolled ? 'text-primary' : 'text-white'}`}>
-                <ShoppingBag size={20} />
-              </button>
-              
-              {isAuthenticated ? (
-                <button 
-                  onClick={() => navigate('/profile')}
-                  className={`p-2 rounded-full hover:bg-secondary/20 transition flex items-center gap-2 ${isScrolled ? 'text-primary' : 'text-white'}`}
-                >
-                  <div className="w-6 h-6 rounded-full overflow-hidden border border-current">
-                     <img src={user?.avatar || "https://via.placeholder.com/50"} alt="User" className="w-full h-full object-cover" />
-                  </div>
-                </button>
-              ) : (
-                <Link 
-                  to="/login"
-                  className={`text-sm font-medium uppercase tracking-widest hover:text-secondary transition-colors ${isScrolled ? 'text-gray-800' : 'text-white'}`}
-                >
-                  Login
-                </Link>
-              )}
+            <div className="hidden md:flex items-center gap-10">
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`text-sm font-medium uppercase tracking-[0.3em] text-[#4b4b4b] hover:text-primary transition-colors relative pb-1 ${
+                      isActive ? 'text-primary' : ''
+                    }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                    )}
+                  </Link>
+                );
+              })}
             </div>
+
+          <div className="hidden md:flex items-center gap-6">
+            {isAuthenticated ? (
+              <button
+                onClick={() => navigate('/profile')}
+                className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-primary/80 hover:text-primary transition"
+              >
+                <User size={18} />
+                Profile
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="text-sm font-semibold uppercase tracking-[0.3em] text-primary/80 hover:text-primary transition"
+              >
+                Login
+              </Link>
+            )}
+            <Link
+              to="/services"
+              className="px-5 py-3 rounded-full bg-primary text-white text-xs font-semibold tracking-[0.3em] uppercase hover:bg-primary-dark transition"
+            >
+              Contact Us
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
              <button 
               onClick={() => setIsOpen(!isOpen)}
-              className={`${isScrolled ? 'text-primary' : 'text-white'}`}
+              className="text-primary"
              >
                {isOpen ? <X size={24} /> : <Menu size={24} />}
              </button>
@@ -85,20 +104,20 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white absolute top-full left-0 w-full shadow-lg border-t border-gray-100">
+        <div className="md:hidden bg-[#f9f6f1] border-t border-[#e8ded0]">
           <div className="flex flex-col px-4 py-6 space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className="text-primary font-medium text-lg border-b border-gray-50 pb-2 hover:text-secondary"
+                className="text-primary font-medium text-lg border-b border-[#e8ded0] pb-3 hover:text-secondary"
               >
                 {link.name}
               </Link>
             ))}
             
-            <div className="pt-4 border-t border-gray-100">
+            <div className="pt-4 border-t border-gray-100 space-y-4">
               {isAuthenticated ? (
                 <Link 
                   to="/profile"
@@ -117,11 +136,19 @@ const Navbar: React.FC = () => {
                   Login / Sign Up
                 </Link>
               )}
+              <Link
+                to="/services"
+                onClick={() => setIsOpen(false)}
+                className="inline-flex justify-center items-center px-4 py-3 rounded-full bg-primary text-white text-sm font-semibold tracking-[0.3em] uppercase"
+              >
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
       )}
     </nav>
+    </>
   );
 };
 

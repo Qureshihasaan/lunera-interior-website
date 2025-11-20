@@ -30,7 +30,7 @@ const Signup: React.FC = () => {
     <div className="min-h-screen pt-24 pb-12 flex items-center justify-center bg-background">
       <div className="w-full max-w-md bg-white p-8 md:p-12 shadow-xl border border-gray-100">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-serif text-primary font-bold tracking-wider mb-2">LUNERA</h1>
+          <img src="/lunora-logo.svg" alt="Lunora logo" className="mx-auto h-14 w-auto mb-4" />
           <p className="text-gray-500 text-sm uppercase tracking-widest">Join The Community</p>
         </div>
 
