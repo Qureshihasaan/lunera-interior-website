@@ -4,41 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lunera | Luxury Interiors</title>
+    <link rel="shortcut icon" href="/lunora-logo.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap");
+
+      .manrope-para {
+        font-family: "Manrope", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 200;
+        font-style: normal;
+      }
+    </style>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: '#4C602B',
-              secondary: '#C19355',
-              'primary-dark': '#3D4F23',
-              'secondary-light': '#D4A86A',
-              background: '#F9F9F7',
+              primary: "#4C602B",
+              secondary: "#C19355",
+              "primary-dark": "#3D4F23",
+              "secondary-light": "#D4A86A",
+              background: "#F9F9F7",
             },
             fontFamily: {
-              serif: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
-              sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+              serif: [
+                "Georgia",
+                "Cambria",
+                "Times New Roman",
+                "Times",
+                "serif",
+              ],
+              sans: ["Helvetica Neue", "Arial", "sans-serif"],
             },
           },
         },
+      };
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://aistudiocdn.com/react@^19.2.0",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+          "react/": "https://aistudiocdn.com/react@^19.2.0/",
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+          "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+          "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+        }
       }
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-  <body class="bg-background text-gray-800 antialiased selection:bg-secondary selection:text-white">
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body
+    class="bg-background text-gray-800 antialiased selection:bg-secondary selection:text-white"
+  >
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

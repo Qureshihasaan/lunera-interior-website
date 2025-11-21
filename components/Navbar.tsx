@@ -32,8 +32,8 @@ const Navbar: React.FC = () => {
       <div className="bg-primary h-1 w-full" />
       
       <nav
-        className={`sticky top-0 z-50 border-b border-[#e8ded0] transition-all duration-300 ${
-          isScrolled ? 'bg-[#f9f6f1]/95 backdrop-blur-sm shadow-sm' : 'bg-[#f9f6f1]'
+        className={`sticky top-0 z-50 border-b border-[#e8ded0] transition-all duration-300  manrope-para ${
+          isScrolled ? 'bg-[#004A3B]/95 backdrop-blur-sm shadow-sm' : 'bg-[#004A3B]'
         }`}
       >
         <div className="max-w-6xl mx-auto px-6">
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
             <Link to="/" >
               <img
               src="lunora-logo.png"
-              className="h-28 w-40"
+              className="h-32 w-48"
               />
             </Link>
 
@@ -52,13 +52,13 @@ const Navbar: React.FC = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`text-sm font-medium uppercase tracking-[0.3em] text-[#4b4b4b] hover:text-primary transition-colors relative pb-1 ${
-                      isActive ? 'text-primary' : ''
+                    className={`text-sm font-medium uppercase tracking-[0.3em] text-[#FFFFFF] hover:text-[#C19355] transition-colors relative pb-1 ${
+                      isActive ? 'text-[#C19355]' : ''
                     }`}
                   >
                     {link.name}
                     {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C19355] " />
                     )}
                   </Link>
                 );
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
             ) : (
               <Link
                 to="/login"
-                className="text-sm font-semibold uppercase tracking-[0.3em] text-primary/80 hover:text-primary transition"
+                className="text-sm font-semibold uppercase tracking-[0.3em] text-white hover:text-primary transition"
               >
                 Login
               </Link>

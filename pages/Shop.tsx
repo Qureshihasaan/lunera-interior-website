@@ -11,10 +11,10 @@ const Shop: React.FC = () => {
     : PRODUCTS.filter(p => p.category === filter);
 
   return (
-    <div className="pt-24 pb-20 bg-background min-h-screen">
+    <div className="pt-24 pb-20 bg-background min-h-screen manrope-para">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-serif text-primary mb-4">The Collection</h1>
+          <h1 className="text-4xl md:text-5xl  text-primary mb-4">The Collection</h1>
           <p className="text-gray-500 max-w-xl mx-auto">Hand-picked pieces defined by quality materials and timeless aesthetics.</p>
         </div>
 

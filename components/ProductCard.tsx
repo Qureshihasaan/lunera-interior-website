@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="group relative bg-white cursor-pointer">
+    <div className="group relative bg-white cursor-pointer manrope-para">
       <div className="aspect-[3/4] overflow-hidden relative bg-gray-100">
         <img 
           src={product.image} 
@@ -26,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       
       <div className="pt-4">
         <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">{product.category}</p>
-        <h3 className="text-lg font-serif text-primary group-hover:text-secondary transition-colors">{product.name}</h3>
+        <h3 className="text-lg  text-primary group-hover:text-secondary transition-colors">{product.name}</h3>
         <p className="text-gray-700 font-medium mt-1">${product.price.toLocaleString()}</p>
       </div>
     </div>

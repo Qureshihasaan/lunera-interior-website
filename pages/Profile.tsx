@@ -15,7 +15,7 @@ const Profile: React.FC = () => {
   if (!user) return null;
 
   return (
-    <div className="pt-24 pb-20 bg-background min-h-screen">
+    <div className="pt-24 pb-20 bg-background min-h-screen manrope-para">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Profile Header */}
@@ -26,7 +26,7 @@ const Profile: React.FC = () => {
             className="w-24 h-24 rounded-full object-cover border-4 border-background"
           />
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-2xl font-serif text-primary font-bold">{user.name}</h1>
+            <h1 className="text-2xl  text-primary font-bold">{user.name}</h1>
             <p className="text-gray-500">{user.email}</p>
             <p className="text-xs text-secondary font-bold uppercase tracking-widest mt-2">Gold Member</p>
           </div>
@@ -46,7 +46,7 @@ const Profile: React.FC = () => {
             <div className="w-12 h-12 bg-background text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
               <Package size={24} />
             </div>
-            <h3 className="text-lg font-serif text-primary mb-2">Order History</h3>
+            <h3 className="text-lg  text-primary mb-2">Order History</h3>
             <p className="text-gray-500 text-sm">View past transactions and track current shipments.</p>
           </div>
 
@@ -55,7 +55,7 @@ const Profile: React.FC = () => {
             <div className="w-12 h-12 bg-background text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
               <Heart size={24} />
             </div>
-            <h3 className="text-lg font-serif text-primary mb-2">Wishlist</h3>
+            <h3 className="text-lg  text-primary mb-2">Wishlist</h3>
             <p className="text-gray-500 text-sm">Manage your saved items and design inspirations.</p>
           </div>
 
@@ -64,14 +64,14 @@ const Profile: React.FC = () => {
             <div className="w-12 h-12 bg-background text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
               <Settings size={24} />
             </div>
-            <h3 className="text-lg font-serif text-primary mb-2">Account Settings</h3>
+            <h3 className="text-lg  text-primary mb-2">Account Settings</h3>
             <p className="text-gray-500 text-sm">Update your profile details, password, and preferences.</p>
           </div>
         </div>
 
         {/* Recent Activity / Empty State */}
         <div className="mt-12">
-          <h3 className="text-xl font-serif text-primary mb-6">Recent Activity</h3>
+          <h3 className="text-xl  text-primary mb-6">Recent Activity</h3>
           <div className="bg-white p-12 text-center border border-gray-100 border-dashed">
             <p className="text-gray-400">No recent orders found.</p>
             <button onClick={() => navigate('/shop')} className="mt-4 text-secondary hover:text-primary font-medium text-sm uppercase tracking-widest">Start Shopping</button>

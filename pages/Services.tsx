@@ -13,10 +13,10 @@ const Services: React.FC = () => {
   };
 
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-32 pb-20 manrope-para">
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h1 className="text-4xl md:text-5xl font-serif text-primary mb-6">Comprehensive Design</h1>
+            <h1 className="text-4xl md:text-5xl  text-primary mb-6">Comprehensive Design</h1>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg">
               From initial concept to final installation, Lunera offers a full suite of architectural and interior design services tailored to your lifestyle.
             </p>
@@ -39,7 +39,7 @@ const Services: React.FC = () => {
                     <div className="text-secondary mb-4">
                       {getIcon(service.iconName)}
                     </div>
-                    <h2 className="text-3xl font-serif text-primary">{service.title}</h2>
+                    <h2 className="text-3xl  text-primary">{service.title}</h2>
                     <p className="text-gray-600 leading-loose text-lg">
                       {service.description} We focus on creating spaces that are not only visually stunning but also deeply personal and functional. Our team works closely with you to understand your vision.
                     </p>

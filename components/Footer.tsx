@@ -22,11 +22,11 @@ const linkGroups = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white text-[#1b1a17]">
+    <footer className="bg-white text-[#1b1a17] manrope-para">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           <div className="space-y-4">
-            <p className="text-3xl font-serif text-primary">interiorfirm</p>
+            <p className="text-3xl  text-primary">interiorfirm</p>
             <p className="text-[#5f5f5f] leading-relaxed">
               Interiorfirm is an acclaimed multidisciplinary studio specializing in interior architecture, interior design.
             </p>

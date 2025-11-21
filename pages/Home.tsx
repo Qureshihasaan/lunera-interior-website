@@ -26,14 +26,14 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#f9f6f1] text-[#1a1a1a]">
+    <div className="bg-[#f9f6f1] text-[#1a1a1a] manrope-para">
       <Hero />
 
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
         <div className="grid gap-14 md:grid-cols-2 items-center">
           <div>
             <p className="uppercase text-xs tracking-[0.5em] text-[#7b7a73] mb-4">Our Promise</p>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#141413]">Make your dream home.</h2>
+            <h2 className="text-4xl md:text-5xl  text-[#141413]">Make your dream home.</h2>
             <p className="text-lg text-[#4c4c4c] mt-6">
               Our multidisciplinary team creates layered spaces with thoughtful detailing, sculpted lighting and curated
               materials that feel personal and enduring.
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
           <div className="flex flex-wrap gap-6 justify-between items-end mb-16">
             <div>
               <p className="uppercase text-xs tracking-[0.5em] text-secondary">Our Expertise</p>
-              <h2 className="text-4xl font-serif text-primary mt-3">Design Services</h2>
+              <h2 className="text-4xl  text-primary mt-3">Design Services</h2>
             </div>
             <Link
               to="/shop"
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
                 className="p-8 rounded-[40px] border border-[#efe5d8] bg-[#fdfaf3] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
               >
                 <div className="text-primary mb-6 group-hover:text-secondary transition-colors">{getIcon(service.iconName)}</div>
-                <h3 className="text-2xl font-serif text-primary mb-3">{service.title}</h3>
+                <h3 className="text-2xl  text-primary mb-3">{service.title}</h3>
                 <p className="text-sm text-[#5f5f5f] leading-relaxed">{service.description}</p>
               </div>
             ))}
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
         <div className="max-w-6xl mx-auto px-6 lg:px-8 grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
           <div className="bg-white rounded-[50px] p-10 shadow-2xl border border-[#f0e4d6]">
             <p className="uppercase text-xs tracking-[0.5em] text-secondary">Studio</p>
-            <h3 className="text-4xl md:text-5xl font-serif text-[#1b1a17] mt-4 mb-6">We curate calm, tactile spaces.</h3>
+            <h3 className="text-4xl md:text-5xl  text-[#1b1a17] mt-4 mb-6">We curate calm, tactile spaces.</h3>
             <p className="text-[#5a5a5a] text-lg leading-relaxed mb-10">
               From concept to installation, we handle every detail: drafting, sourcing, site coordination and layered
               styling that tells your story.
@@ -123,11 +123,11 @@ const Home: React.FC = () => {
               Learn More <ArrowRight size={16} />
             </Link>
           </div>
-          <div className="relative bg-[#f9cf82] rounded-[90px] p-10 overflow-hidden text-[#1b1a17]">
+          <div className="relative bg-[#C19355] rounded-[90px] p-10 overflow-hidden text-[#1b1a17]">
             <div className="max-w-md">
-              <p className="uppercase text-xs tracking-[0.5em] text-[#7a5a1d]">Collaborate</p>
-              <h3 className="text-4xl font-serif mt-4 mb-4">Interested in working with us?</h3>
-              <p className="text-[#5a4b32] mb-8 leading-relaxed">
+              <p className="uppercase text-xs tracking-[0.5em] text-[#FFFFFF]">Collaborate</p>
+              <h3 className="text-4xl  mt-4 mb-4">Interested in working with us?</h3>
+              <p className="text-[#FFFFFF] mb-8 leading-relaxed">
                 If you have a passion for creating beautiful and functional spaces, visit our contact page and share the
                 details of your project. We respond within 2 business days.
               </p>
