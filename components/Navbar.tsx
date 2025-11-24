@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
       <div className="bg-[#F6F6DB] h-1 w-full" />
 
       <nav
-        className={`sticky top-0 z-50 border-b border-[#e8ded0] transition-all duration-300  manrope-para ${
+        className={`sticky top-0 z-50 border-b border-[#e8ded0] transition-all duration-300 py-2  manrope-para ${
           isScrolled
             ? "bg-[#F6F6DB]/95 backdrop-blur-sm shadow-sm"
             : "bg-[#F6F6DB]"
@@ -40,8 +40,8 @@ const Navbar: React.FC = () => {
       >
         <div className="max-w-6xl mx-auto ">
           <div className="flex justify-between items-center min-h-[72px]">
-            <Link to="/">
-              <img src="lunora-logo.png" className="h-12 w-32" />
+            <Link to="/" className="mx-auto md:mx-0">
+              <img src="lunora-logo.png" className="h-16" />
             </Link>
 
             <div className="hidden md:flex items-center gap-10">
@@ -51,13 +51,13 @@ const Navbar: React.FC = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`text-sm font-medium uppercase tracking-[0.3em] text-[#000000] font-bold hover:text-[#C19355] transition-colors relative pb-1 ${
+                    className={`text-sm font-medium uppercase tracking-[0.3em] text-[#004B2A] font-bold hover:text-[#C19355] transition-colors relative pb-1 ${
                       isActive ? "text-[#C19355]" : ""
                     }`}
                   >
                     {link.name}
                     {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#000000] " />
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#004B2A] " />
                     )}
                   </Link>
                 );
@@ -76,14 +76,14 @@ const Navbar: React.FC = () => {
               ) : (
                 <Link
                   to="/login"
-                  className="text-sm font-semibold uppercase tracking-[0.3em] text-black hover:text-[#C19355] transition"
+                  className="text-sm font-semibold uppercase tracking-[0.3em] text-[#004B2A] hover:text-[#C19355] transition"
                 >
                   Login
                 </Link>
               )}
               <Link
                 to="/services"
-                className="px-5 py-3 rounded-full bg-secondary text-black text-xs font-semibold tracking-[0.3em] uppercase hover:bg-secondary-light transition"
+                className="px-5 py-3 rounded-full bg-[#004B2A] text-[#F6F6DB] text-xs font-semibold tracking-[0.3em] uppercase hover:bg-secondary-light transition"
               >
                 Contact Us
               </Link>
@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-primary"
+                className="text-[#004B2A]"
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -103,14 +103,14 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden bg-[#f9f6f1] border-t border-[#e8ded0]">
+          <div className="md:hidden bg-[#F6F6DB] border-t border-[#e8ded0]">
             <div className="flex flex-col px-4 py-6 space-y-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className="text-primary font-medium text-lg border-b border-[#e8ded0] pb-3 hover:text-secondary"
+                  className="text-[004B2A] font-medium text-lg border-b border-[#004B2A] pb-3 hover:text-secondary"
                 >
                   {link.name}
                 </Link>
@@ -130,7 +130,7 @@ const Navbar: React.FC = () => {
                   <Link
                     to="/login"
                     onClick={() => setIsOpen(false)}
-                    className="block text-primary font-medium text-lg hover:text-secondary"
+                    className="block text-[#004B2A] font-medium text-lg hover:text-secondary"
                   >
                     Login / Sign Up
                   </Link>
@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
                 <Link
                   to="/services"
                   onClick={() => setIsOpen(false)}
-                  className="inline-flex justify-center items-center px-4 py-3 rounded-full bg-primary text-white text-sm font-semibold tracking-[0.3em] uppercase"
+                  className="inline-flex justify-center items-center px-4 py-3 rounded-full bg-[#004B2A] text-[#F6F6DB] text-sm font-semibold tracking-[0.3em] uppercase"
                 >
                   Contact Us
                 </Link>

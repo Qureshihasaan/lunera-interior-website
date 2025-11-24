@@ -52,7 +52,7 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-2 gap-6">
             <div className="rounded-[60px] overflow-hidden shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80"
+                src="/diningjpg.jpg"
                 alt="Bedroom detail"
                 className="h-full w-full object-cover"
               />
@@ -139,7 +139,7 @@ const Home: React.FC = () => {
               </Link>
             </div>
             <img
-              src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80"
+              src="/hero_1.jpg"
               alt="Styled vignette"
               className="absolute bottom-0 right-6 w-36 md:w-44 rounded-t-[80px] border-4 border-white object-cover"
             />
