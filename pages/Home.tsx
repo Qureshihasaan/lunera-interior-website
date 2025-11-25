@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Layout, Sofa, Lamp } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from '../components/Hero';
 import { SERVICES } from '../constants';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const featureList = [
   "Bespoke Furniture",
@@ -21,11 +26,72 @@ const getIcon = (name: string) => {
 };
 
 const Home: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const promiseRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const studioRef = useRef<HTMLDivElement>(null);
+  const collaborateRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // Hero Animation (assuming Hero component handles its own or we animate the container)
+    // We'll animate the main container entrance for now if Hero doesn't have refs exposed
+
+    // Promise Section
+    gsap.from(promiseRef.current, {
+      scrollTrigger: {
+        trigger: promiseRef.current,
+        start: "top 80%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    // Services Section
+    gsap.from(".service-card", {
+      scrollTrigger: {
+        trigger: servicesRef.current,
+        start: "top 75%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    // Studio Section
+    gsap.from(studioRef.current, {
+      scrollTrigger: {
+        trigger: studioRef.current,
+        start: "top 70%",
+      },
+      x: -50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    // Collaborate Section
+    gsap.from(collaborateRef.current, {
+      scrollTrigger: {
+        trigger: collaborateRef.current,
+        start: "top 85%",
+      },
+      x: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+  }, { scope: containerRef });
+
   return (
-    <div className="bg-[#F6F6DB] text-[#1a1a1a] manrope-para">
+    <div ref={containerRef} className="bg-[#F6F6DB] text-[#1a1a1a] manrope-para">
       <Hero />
 
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <section ref={promiseRef} className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
         <div className="grid gap-14 md:grid-cols-2 items-center">
           <div>
             <p className="uppercase text-xs tracking-[0.5em] text-[#004A2B] mb-4">Our Promise</p>
@@ -64,7 +130,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-[#F6F6DB]">
+      <section ref={servicesRef} className="py-20 bg-[#F6F6DB]">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex flex-wrap gap-6 justify-between items-end mb-16">
             <div>
@@ -82,7 +148,7 @@ const Home: React.FC = () => {
             {SERVICES.map((service) => (
               <div
                 key={service.id}
-                className="p-8 rounded-[40px] border border-[#efe5d8] bg-[#004A2B] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
+                className="service-card p-8 rounded-[40px] border border-[#efe5d8] bg-[#004A2B] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
               >
                 <div className="text-[#F6F6DB] mb-6 group-hover:text-[#004A2B] transition-colors">{getIcon(service.iconName)}</div>
                 <h3 className="text-2xl  text-[#F6F6DB] mb-3">{service.title}</h3>
@@ -95,7 +161,7 @@ const Home: React.FC = () => {
 
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
-          <div className="bg-[#004A2B] rounded-[50px] p-10 shadow-2xl border border-[#f0e4d6]">
+          <div ref={studioRef} className="bg-[#004A2B] rounded-[50px] p-10 shadow-2xl border border-[#f0e4d6]">
             <p className="uppercase text-xs tracking-[0.5em] text-[#F6F6DB]">Studio</p>
             <h3 className="text-4xl md:text-5xl  text-[#C19355] mt-4 mb-6">We curate calm, tactile spaces.</h3>
             <p className="text-[#F6F6DB] text-lg leading-relaxed mb-10">
@@ -119,7 +185,7 @@ const Home: React.FC = () => {
               Learn More <ArrowRight size={16} />
             </Link>
           </div>
-          <div className="relative bg-[#C19355] rounded-[90px] p-10 overflow-hidden text-[#1b1a17]">
+          <div ref={collaborateRef} className="relative bg-[#C19355] rounded-[90px] p-10 overflow-hidden text-[#1b1a17]">
             <div className="max-w-md">
               <p className="uppercase text-xs tracking-[0.5em] text-[#F6F6DB]">Collaborate</p>
               <h3 className="text-4xl text-[#004A2B] mt-4 mb-4">Interested in working with us?</h3>
