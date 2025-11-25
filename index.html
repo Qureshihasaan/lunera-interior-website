@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lunera | Luxury Interiors</title>
-    <link rel="shortcut icon" href="/lunora-logo.png" type="image/x-icon" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap");
 
-      .manrope-para {
-        font-family: "Manrope", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 200;
-        font-style: normal;
-      }
-    </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#4C602B",
-              secondary: "#C19355",
-              "primary-dark": "#3D4F23",
-              "secondary-light": "#D4A86A",
-              background: "#F6F6DB",
-            },
-            fontFamily: {
-              serif: [
-                "Georgia",
-                "Cambria",
-                "Times New Roman",
-                "Times",
-                "serif",
-              ],
-              sans: ["Helvetica Neue", "Arial", "sans-serif"],
-            },
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lunera | Luxury Interiors</title>
+  <link rel="shortcut icon" href="/lunora-logo.png" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+    .font-serif {
+      font-family: 'Mesdaq', 'Playfair Display', serif;
+    }
+
+    .font-sans {
+      font-family: 'Gravesend Sans', 'Manrope', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1A3C34",
+            secondary: "#D4AF37",
+            "primary-dark": "#122A24",
+            "secondary-light": "#E5C565",
+            background: "#F9F9F0",
+            accent: "#C19355"
+          },
+          fontFamily: {
+            serif: ["Mesdaq", "Playfair Display", "serif"],
+            sans: ["Gravesend Sans", "Manrope", "sans-serif"],
           },
         },
-      };
-    </script>
-    <script type="importmap">
+      },
+    };
+  </script>
+  <script type="importmap">
       {
         "imports": {
           "react": "https://aistudiocdn.com/react@^19.2.0",
@@ -53,12 +50,12 @@
         }
       }
     </script>
-    <link rel="stylesheet" href="/index.css" />
-  </head>
-  <body
-    class="bg-background text-gray-800 antialiased selection:bg-secondary selection:text-white"
-  >
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+  <link rel="stylesheet" href="/index.css" />
+</head>
+
+<body class="bg-background text-gray-800 antialiased selection:bg-secondary selection:text-white">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>

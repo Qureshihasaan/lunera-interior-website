@@ -1,68 +1,64 @@
 import React from 'react';
-import { Instagram, Facebook, Twitter } from 'lucide-react';
-
-const linkGroups = [
-  {
-    title: 'Company',
-    items: ['Career', 'About Us', 'Blog', 'Feature', 'Story'],
-  },
-  {
-    title: 'Design',
-    items: ['2D Designer', '3D Designer', 'Collaboration', 'Tools', 'Important Link'],
-  },
-  {
-    title: 'Links',
-    items: ['Projects', 'Contact', 'Send Email', 'Fiverr', 'upWork'],
-  },
-  {
-    title: 'Material',
-    items: ['Company Profile', 'Asset', 'Location Map', 'Estimate Cost', 'Default Quotation'],
-  },
-];
+import { Instagram, Facebook, Twitter, Sparkles } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white text-[#1b1a17] manrope-para">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
-          <div className="space-y-4">
-            <p className="text-3xl  text-primary">interiorfirm</p>
-            <p className="text-[#5f5f5f] leading-relaxed">
-              Interiorfirm is an acclaimed multidisciplinary studio specializing in interior architecture, interior design.
-            </p>
-            <div className="flex gap-4 text-primary">
-              <Instagram size={18} className="cursor-pointer hover:text-secondary" />
-              <Facebook size={18} className="cursor-pointer hover:text-secondary" />
-              <Twitter size={18} className="cursor-pointer hover:text-secondary" />
+    <footer className="bg-primary text-secondary-light pt-20 pb-10 border-t border-primary-dark">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-20">
+          {/* About Us */}
+          <div className="space-y-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-secondary">About Us</h3>
+            <div className="space-y-2 text-gray-400 font-sans text-sm leading-relaxed">
+              <p>Lunera Home Decor Design</p>
+              <p>425 1f Kaori Road, Suite 42375</p>
+              <p>All rights reserved.</p>
+            </div>
+            <div className="flex gap-4 pt-4">
+              <Facebook size={20} className="hover:text-white transition-colors cursor-pointer" />
+              <Instagram size={20} className="hover:text-white transition-colors cursor-pointer" />
+              <Twitter size={20} className="hover:text-white transition-colors cursor-pointer" />
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm text-[#5f5f5f]">
-            {linkGroups.map((group) => (
-              <div key={group.title}>
-                <p className="uppercase text-xs tracking-[0.4em] text-[#8a8a8a] mb-4">{group.title}</p>
-                <ul className="space-y-3">
-                  {group.items.map((item) => (
-                    <li key={item}>
-                      <a href="#" className="hover:text-primary transition-colors">
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+
+          {/* Collections */}
+          <div className="space-y-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-secondary">Collections</h3>
+            <ul className="space-y-3 text-gray-400 font-sans text-sm">
+              <li><a href="#" className="hover:text-white transition-colors">Shop</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Collections</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Journal</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="space-y-6 relative">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-secondary">Newsletter Sign Up</h3>
+            <p className="text-gray-400 font-sans text-sm">Sign up for our minimal newsletter</p>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Email address"
+                className="bg-transparent border border-gray-600 text-white px-4 py-2 w-full focus:outline-none focus:border-secondary text-sm"
+              />
+              <button className="bg-secondary text-primary-dark px-6 py-2 text-sm font-bold uppercase hover:bg-secondary-light transition-colors">
+                Sign Up
+              </button>
+            </div>
+            <div className="absolute -bottom-10 -right-10 text-secondary opacity-20">
+              <Sparkles size={100} />
+            </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-12 text-xs uppercase tracking-[0.4em] text-[#8a8a8a]">
-          <span>&copy; Copyright 2024 Interiorfirm — All Rights Reserved.</span>
-          <div className="flex gap-6">
-            <span>Privacy Policy</span>
-            <span>Terms & Conditions</span>
-          </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-primary-dark text-center">
+          <p className="text-xs uppercase tracking-widest text-gray-500">
+            Designed by Talha Qureshi
+          </p>
         </div>
-      </div>
-      <div className="bg-primary text-white text-center py-6 text-xs uppercase tracking-[0.5em]">
-        Make your dream home.
       </div>
     </footer>
   );

@@ -1,153 +1,126 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, User } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const leftLinks = [
+    { name: "Shop", path: "/shop" },
+    { name: "Collections", path: "/shop" },
+  ];
 
-  const navLinks = [
-    { name: "Home", path: "/" },
+  const rightLinks = [
     { name: "About", path: "/services" },
-    { name: "Service", path: "/services" },
-    { name: "Projects", path: "/shop" },
-    { name: "Feedbacks", path: "/services" },
+    { name: "Journal", path: "/services" },
+    { name: "Contact", path: "/services" },
   ];
 
   return (
-    <>
-      {/* Top Bar */}
-      <div className="bg-[#F6F6DB] h-1 w-full" />
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary text-white py-4 shadow-md">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex justify-between items-center">
+          {/* Left Links */}
+          <div className="hidden md:flex items-center gap-8">
+            {leftLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-sm font-sans hover:text-secondary transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
 
-      <nav
-        className={`sticky top-0 z-50 border-b border-[#e8ded0] transition-all duration-300  manrope-para ${
-          isScrolled
-            ? "bg-[#F6F6DB]/95 backdrop-blur-sm shadow-sm"
-            : "bg-[#F6F6DB]"
-        }`}
-      >
-        <div className="max-w-6xl mx-auto ">
-          <div className="flex justify-between items-center min-h-[72px]">
-            <Link to="/">
-              <img src="lunora-logo.png" className="h-12 w-32" />
-            </Link>
+          {/* Logo Center */}
+          <Link to="/" className="text-3xl font-serif tracking-widest text-center w-32">
+            <img src="lunora-logo.png" alt="Lunera Logo" />
+          </Link>
 
-            <div className="hidden md:flex items-center gap-10">
-              {navLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className={`text-sm font-medium uppercase tracking-[0.3em] text-[#000000] font-bold hover:text-[#C19355] transition-colors relative pb-1 ${
-                      isActive ? "text-[#C19355]" : ""
-                    }`}
-                  >
-                    {link.name}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#000000] " />
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
+          {/* Right Links */}
+          <div className="hidden md:flex items-center gap-8">
+            {rightLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-sm font-sans hover:text-secondary transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+            {isAuthenticated ? (
+              <button
+                onClick={() => navigate("/profile")}
+                className="text-sm font-sans hover:text-secondary transition-colors"
+              >
+                <User size={18} />
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="text-sm font-sans hover:text-secondary transition-colors"
+              >
+                Login
+              </Link>
+            )}
+          </div>
 
-            <div className="hidden md:flex items-center gap-6">
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-current"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {
+        isOpen && (
+          <div className="md:hidden bg-primary absolute top-full left-0 right-0 border-t border-primary-dark p-6 shadow-xl">
+            <div className="flex flex-col space-y-4 text-center">
+              {[...leftLinks, ...rightLinks].map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className="text-white font-sans text-lg hover:text-secondary transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
               {isAuthenticated ? (
                 <button
-                  onClick={() => navigate("/profile")}
-                  className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-primary/80 hover:text-primary transition"
+                  onClick={() => {
+                    navigate("/profile");
+                    setIsOpen(false);
+                  }}
+                  className="text-white font-sans text-lg hover:text-secondary transition-colors"
                 >
-                  <User size={18} />
                   Profile
                 </button>
               ) : (
                 <Link
                   to="/login"
-                  className="text-sm font-semibold uppercase tracking-[0.3em] text-black hover:text-[#C19355] transition"
+                  onClick={() => setIsOpen(false)}
+                  className="text-white font-sans text-lg hover:text-secondary transition-colors"
                 >
                   Login
                 </Link>
               )}
-              <Link
-                to="/services"
-                className="px-5 py-3 rounded-full bg-secondary text-black text-xs font-semibold tracking-[0.3em] uppercase hover:bg-secondary-light transition"
-              >
-                Contact Us
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-primary"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
             </div>
           </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-[#f9f6f1] border-t border-[#e8ded0]">
-            <div className="flex flex-col px-4 py-6 space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className="text-primary font-medium text-lg border-b border-[#e8ded0] pb-3 hover:text-secondary"
-                >
-                  {link.name}
-                </Link>
-              ))}
-
-              <div className="pt-4 border-t border-gray-100 space-y-4">
-                {isAuthenticated ? (
-                  <Link
-                    to="/profile"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 text-primary font-medium text-lg"
-                  >
-                    <User size={20} />
-                    My Account
-                  </Link>
-                ) : (
-                  <Link
-                    to="/login"
-                    onClick={() => setIsOpen(false)}
-                    className="block text-primary font-medium text-lg hover:text-secondary"
-                  >
-                    Login / Sign Up
-                  </Link>
-                )}
-                <Link
-                  to="/services"
-                  onClick={() => setIsOpen(false)}
-                  className="inline-flex justify-center items-center px-4 py-3 rounded-full bg-primary text-white text-sm font-semibold tracking-[0.3em] uppercase"
-                >
-                  Contact Us
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
-    </>
+        )
+      }
+    </nav >
   );
 };
 
