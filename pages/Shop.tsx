@@ -27,7 +27,7 @@ const Shop: React.FC = () => {
               className={`px-6 py-2 text-sm uppercase tracking-widest transition-all ${
                 filter === cat 
                   ? 'bg-primary text-white' 
-                  : 'bg-white text-gray-600 hover:text-primary border border-transparent hover:border-primary'
+                  : 'bg-[#F6F6DB] text-gray-600 hover:text-primary border border-transparent hover:border-primary'
               }`}
             >
               {cat}

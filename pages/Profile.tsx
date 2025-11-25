@@ -19,7 +19,7 @@ const Profile: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Profile Header */}
-        <div className="bg-white p-8 shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8 mb-8">
+        <div className="bg-[#F6F6DB] p-8 shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8 mb-8">
           <img 
             src={user.avatar || "https://via.placeholder.com/100"} 
             alt={user.name} 
@@ -42,7 +42,7 @@ const Profile: React.FC = () => {
         {/* Dashboard Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Orders */}
-          <div className="bg-white p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
+          <div className="bg-[#F6F6DB] p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
             <div className="w-12 h-12 bg-background text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
               <Package size={24} />
             </div>
@@ -51,7 +51,7 @@ const Profile: React.FC = () => {
           </div>
 
           {/* Wishlist */}
-          <div className="bg-white p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
+          <div className="bg-[#F6F6DB] p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
             <div className="w-12 h-12 bg-background text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
               <Heart size={24} />
             </div>
@@ -60,7 +60,7 @@ const Profile: React.FC = () => {
           </div>
 
           {/* Settings */}
-          <div className="bg-white p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
+          <div className="bg-[#F6F6DB] p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
             <div className="w-12 h-12 bg-background text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
               <Settings size={24} />
             </div>
@@ -72,7 +72,7 @@ const Profile: React.FC = () => {
         {/* Recent Activity / Empty State */}
         <div className="mt-12">
           <h3 className="text-xl  text-primary mb-6">Recent Activity</h3>
-          <div className="bg-white p-12 text-center border border-gray-100 border-dashed">
+          <div className="bg-[#F6F6DB] p-12 text-center border border-gray-100 border-dashed">
             <p className="text-gray-400">No recent orders found.</p>
             <button onClick={() => navigate('/shop')} className="mt-4 text-secondary hover:text-primary font-medium text-sm uppercase tracking-widest">Start Shopping</button>
           </div>
