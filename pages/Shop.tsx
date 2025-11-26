@@ -11,11 +11,11 @@ const Shop: React.FC = () => {
     : PRODUCTS.filter(p => p.category === filter);
 
   return (
-    <div className="pt-24 pb-20 bg-background min-h-screen manrope-para">
+    <div className="pt-24 pb-20 bg-[#004A2B] min-h-screen manrope-para">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl  text-primary mb-4">The Collection</h1>
-          <p className="text-gray-500 max-w-xl mx-auto">Hand-picked pieces defined by quality materials and timeless aesthetics.</p>
+          <h1 className="text-4xl md:text-5xl  text-[#c19355] mb-4">The Collection</h1>
+          <p className="text-[#F6F6DB] max-w-xl mx-auto">Hand-picked pieces defined by quality materials and timeless aesthetics.</p>
         </div>
 
         {/* Filters */}
@@ -26,7 +26,7 @@ const Shop: React.FC = () => {
               onClick={() => setFilter(cat)}
               className={`px-6 py-2 text-sm uppercase tracking-widest transition-all ${
                 filter === cat 
-                  ? 'bg-primary text-white' 
+                  ? 'bg-[#c19355] text-[#004B2A]' 
                   : 'bg-[#F6F6DB] text-gray-600 hover:text-primary border border-transparent hover:border-primary'
               }`}
             >

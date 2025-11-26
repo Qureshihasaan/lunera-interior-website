@@ -16,7 +16,7 @@ const StyledWrapper = styled.div`
   
   .loader {
     position: relative;
-    margin: 240px auto;
+    margin: 210px auto;
     width: 200px;
     overflow: hidden;
     height: 200px;

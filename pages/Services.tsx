@@ -16,8 +16,8 @@ const Services: React.FC = () => {
     <div className="pt-32 pb-20 manrope-para">
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h1 className="text-4xl md:text-5xl  text-primary mb-6">Comprehensive Design</h1>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+            <h1 className="text-4xl md:text-5xl  text-[#c19355] mb-6">Comprehensive Design</h1>
+            <p className="text-[#F6F6DB] max-w-3xl mx-auto text-lg">
               From initial concept to final installation, Lunera offers a full suite of architectural and interior design services tailored to your lifestyle.
             </p>
           </div>
@@ -36,22 +36,22 @@ const Services: React.FC = () => {
                  
                  {/* Text Content */}
                  <div className="w-full md:w-1/2 space-y-6">
-                    <div className="text-secondary mb-4">
+                    <div className="text-[#C19355] mb-4">
                       {getIcon(service.iconName)}
                     </div>
-                    <h2 className="text-3xl  text-primary">{service.title}</h2>
-                    <p className="text-gray-600 leading-loose text-lg">
+                    <h2 className="text-3xl  text-[#C19355]">{service.title}</h2>
+                    <p className="text-[#F6F6DB] leading-loose text-lg">
                       {service.description} We focus on creating spaces that are not only visually stunning but also deeply personal and functional. Our team works closely with you to understand your vision.
                     </p>
                     <ul className="space-y-2">
-                      <li className="flex items-center gap-3 text-gray-700">
-                        <Check size={16} className="text-secondary" /> Initial Consultation & Space Planning
+                      <li className="flex items-center gap-3 text-[#F6F6DB]">
+                        <Check size={16} className="text-[#C19355]" /> Initial Consultation & Space Planning
                       </li>
-                      <li className="flex items-center gap-3 text-gray-700">
-                        <Check size={16} className="text-secondary" /> 3D Visualization & Rendering
+                      <li className="flex items-center gap-3 text-[#F6F6DB]">
+                        <Check size={16} className="text-[#C19355]" /> 3D Visualization & Rendering
                       </li>
-                      <li className="flex items-center gap-3 text-gray-700">
-                        <Check size={16} className="text-secondary" /> Procurement & Installation
+                      <li className="flex items-center gap-3 text-[#F6F6DB]">
+                        <Check size={16} className="text-[#C19355]" /> Procurement & Installation
                       </li>
                     </ul>
                  </div>

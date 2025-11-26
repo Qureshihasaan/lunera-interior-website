@@ -26,9 +26,9 @@ const Profile: React.FC = () => {
             className="w-24 h-24 rounded-full object-cover border-4 border-background"
           />
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-2xl  text-primary font-bold">{user.name}</h1>
-            <p className="text-gray-500">{user.email}</p>
-            <p className="text-xs text-secondary font-bold uppercase tracking-widest mt-2">Gold Member</p>
+            <h1 className="text-2xl  text-[#004a2b] font-bold">{user.name}</h1>
+            <p className="text-[#C19355]">{user.email}</p>
+            <p className="text-xs text-[#C19355] font-bold uppercase tracking-widest mt-2">Gold Member</p>
           </div>
           <button 
             onClick={handleLogout}
@@ -42,7 +42,7 @@ const Profile: React.FC = () => {
         {/* Dashboard Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Orders */}
-          <div className="bg-[#F6F6DB] p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
+          <div className="bg-[#c19355] p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
             <div className="w-12 h-12 bg-background text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
               <Package size={24} />
             </div>

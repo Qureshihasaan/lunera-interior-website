@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, discount }) => {
   return (
-    <div className="group flex flex-col bg-transparent">
+    <div className="group flex flex-col bg-[#004A2B]">
       <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
         <img
           src={product.image}
@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, discount }) => {
       </div>
 
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-lg font-sans text-primary-dark font-medium max-w-[70%] leading-tight">
+        <h3 className="text-lg font-sans text-[#c19355] font-medium max-w-[70%] leading-tight">
           {product.name}
         </h3>
         <p className="text-lg font-sans text-accent">
@@ -31,7 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, discount }) => {
         </p>
       </div>
 
-      <button className="w-full py-3 bg-primary text-white text-sm uppercase tracking-widest hover:bg-primary-dark transition-colors">
+      <button className="w-full py-3 bg-[#c19355] text-white text-sm uppercase tracking-widest hover:bg-primary-dark transition-colors">
         Add to Cart
       </button>
     </div>

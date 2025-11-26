@@ -19,10 +19,7 @@ const App: React.FC = () => {
     setTimeout(() => setLoading(false), 2500);
   }, []);
 
-    if (true) return  <Loader />
-   
-  
-    // if (loading) return <Loader />;
+    if (loading) return <Loader />;
 
   return (
     <AuthProvider>
