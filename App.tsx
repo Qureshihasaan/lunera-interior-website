@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -11,6 +12,18 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 
 const App: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    
+    setTimeout(() => setLoading(false), 2500);
+  }, []);
+
+    if (true) return  <Loader />
+   
+  
+    // if (loading) return <Loader />;
+
   return (
     <AuthProvider>
       <HashRouter>
