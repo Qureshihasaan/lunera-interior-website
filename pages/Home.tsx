@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from '../components/Hero';
-import { SERVICES } from '../constants';
+import { SERVICES, PRODUCTS } from '../constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
         start: "top 75%",
       },
       y: 50,
-      opacity: 0,
+      opacity: 1,
       duration: 0.8,
       stagger: 0.2,
       ease: "power3.out"
@@ -130,6 +130,46 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Featured Products Section */}
+      <section className="py-20 bg-[#004A2B] text-[#F6F6DB]">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-wrap gap-6 justify-between items-end mb-12">
+            <div>
+              <p className="uppercase text-xs tracking-[0.5em] text-[#C19355]">Collection</p>
+              <h2 className="text-4xl mt-3">Featured Pieces</h2>
+            </div>
+            <Link
+              to="/shop"
+              className="flex items-center gap-2 text-[#F6F6DB] font-medium tracking-[0.3em] uppercase text-xs hover:text-[#C19355] transition-colors"
+            >
+              View All <ArrowRight size={16} />
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {PRODUCTS.slice(0, 3).map((product) => (
+              <div key={product.id} className="group cursor-pointer">
+                <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden mb-6">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-xl font-medium mb-1">{product.name}</h3>
+                    <p className="text-sm text-[#F6F6DB]/70">{product.category}</p>
+                  </div>
+                  <span className="text-lg font-serif text-[#C19355]">${product.price}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section ref={servicesRef} className="py-20 bg-[#F6F6DB]">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex flex-wrap gap-6 justify-between items-end mb-16">
@@ -148,11 +188,11 @@ const Home: React.FC = () => {
             {SERVICES.map((service) => (
               <div
                 key={service.id}
-                className="service-card p-8 rounded-[40px] border border-[#efe5d8] bg-[#004A2B] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
+                className="service-card group p-8 rounded-[40px] border border-[#efe5d8] bg-[#004A2B] hover:bg-[#F6F6DB] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
               >
                 <div className="text-[#F6F6DB] mb-6 group-hover:text-[#004A2B] transition-colors">{getIcon(service.iconName)}</div>
-                <h3 className="text-2xl  text-[#F6F6DB] mb-3">{service.title}</h3>
-                <p className="text-sm text-[#F6F6DB] leading-relaxed">{service.description}</p>
+                <h3 className="text-2xl text-[#F6F6DB] group-hover:text-[#004A2B] mb-3 transition-colors">{service.title}</h3>
+                <p className="text-sm text-[#F6F6DB] group-hover:text-[#004A2B] leading-relaxed transition-colors">{service.description}</p>
               </div>
             ))}
           </div>

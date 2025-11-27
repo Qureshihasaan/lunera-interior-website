@@ -6,9 +6,9 @@ const Hero: React.FC = () => {
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat object"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop")',
+          backgroundImage: 'url("/Hero_main.jpg")',
         }}
       >
         {/* Overlay */}
