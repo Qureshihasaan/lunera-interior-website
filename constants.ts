@@ -3,18 +3,18 @@ import { Product, Service, Testimonial } from './types';
 export const APP_NAME = "Lunera";
 
 export const PRODUCTS: Product[] = [
-  { id: 1, name: "Velvet Emerald Sofa", price: 2499, category: "Living Room", image: "https://picsum.photos/id/103/600/400" },
-  { id: 2, name: "Artisan Gold Lamp", price: 350, category: "Lighting", image: "https://picsum.photos/id/104/600/400" },
-  { id: 3, name: "Marble Coffee Table", price: 1200, category: "Tables", image: "https://picsum.photos/id/106/600/400" },
-  { id: 4, name: "Abstract Canvas Art", price: 890, category: "Decor", image: "https://picsum.photos/id/107/600/400" },
-  { id: 5, name: "Mid-Century Armchair", price: 1150, category: "Seating", image: "https://picsum.photos/id/108/600/400" },
-  { id: 6, name: "Handwoven Persian Rug", price: 3200, category: "Textiles", image: "https://picsum.photos/id/109/600/400" },
+  { id: 1, name: "Velvet Emerald Sofa", price: 2499, category: "Living Room", image: "/veletSofa.jpg" },
+  { id: 2, name: "Artisan Gold Lamp", price: 350, category: "Lighting", image: "/goldenLamp.jpg" },
+  { id: 3, name: "Marble Coffee Table", price: 1200, category: "Tables", image: "/coffeeTable.jpg" },
+  { id: 4, name: "Abstract Sofa", price: 890, category: "Seating", image: "/sofa.jpg" },
+  { id: 5, name: "Mid-Century Armchair", price: 1150, category: "Seating", image: "/armChair.jpg" },
+  { id: 6, name: "Handwoven Persian Rug", price: 3200, category: "Textiles", image: "rug.jpg" },
 ];
 
 export const SERVICES: Service[] = [
-  { id: 1, title: "Interior Planning", description: "Full-scale architectural planning and layout optimization.", iconName: "Layout" },
-  { id: 2, title: "Custom Furnishing", description: "Bespoke furniture design tailored to your specific style.", iconName: "Sofa" },
-  { id: 3, title: "Lighting Design", description: "Atmospheric lighting solutions to elevate every mood.", iconName: "Lamp" },
+  { id: 1, title: "Interior Planning", description: "Full-scale architectural planning and layout optimization.", iconName: "Layout" , image: "/planning.jpg" },
+  { id: 2, title: "Custom Furnishing", description: "Bespoke furniture design tailored to your specific style.", iconName: "Sofa" , image: "/sofa.jpg" },
+  { id: 3, title: "Lighting Design", description: "Atmospheric lighting solutions to elevate every mood.", iconName: "Lamp" , image: "/armChair.jpg" },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

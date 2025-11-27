@@ -28,7 +28,7 @@ const Services: React.FC = () => {
                  {/* Image Placeholder */}
                  <div className="w-full md:w-1/2 aspect-video bg-gray-200 overflow-hidden relative">
                     <img 
-                      src={`https://picsum.photos/id/${120 + index}/800/600`} 
+                      src={service.image} 
                       alt={service.title} 
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                     />

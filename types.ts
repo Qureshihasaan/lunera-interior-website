@@ -11,6 +11,7 @@ export interface Service {
   title: string;
   description: string;
   iconName: string;
+  image: string;
 }
 
 export interface Testimonial {

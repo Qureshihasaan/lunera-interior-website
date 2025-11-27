@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   const leftLinks = [
-    { name: "Shop", path: "/shop" },
+    { name: "Home", path: "/" },
     { name: "Collections", path: "/shop" },
   ];
 
