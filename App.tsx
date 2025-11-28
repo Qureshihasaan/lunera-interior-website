@@ -15,22 +15,22 @@ import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
     setTimeout(() => setLoading(false), 2500);
   }, []);
 
-    // if (true) return <Loader />;
-    if (loading) return <Loader />;
+  if (loading) return <Loader />;
 
   return (
     <AuthProvider>
       <CartProvider>
         <HashRouter>
+          <ScrollToTop />
           <div className="flex flex-col min-h-screen font-sans overflow-x-hidden">
             <Navbar />
             <main className="flex-grow">

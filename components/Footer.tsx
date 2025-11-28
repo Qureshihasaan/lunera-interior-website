@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Twitter, Sparkles } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -23,13 +24,12 @@ const Footer: React.FC = () => {
 
           {/* Collections */}
           <div className="space-y-6">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-secondary">Collections</h3>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-secondary">Quick Links</h3>
             <ul className="space-y-3 text-gray-400 font-sans text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Shop</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Collections</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Journal</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <li><Link to="/shop" className="hover:text-white transition-colors">Shop</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">Services</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/cart" className="hover:text-white transition-colors">Cart</Link></li>
             </ul>
           </div>
 
