@@ -28,30 +28,28 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#004A2B]/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#004A2B]/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-2xl font-serif text-[#F6F6DB] tracking-wider">
-            <img src="/lunora-logo.png" className="h-14" alt="" />
+            <img src="/lunora-logo.png" className="h-12" alt="" />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8"> 
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${
-                  isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
-                }`}
+                className={`text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
+                  }`}
               >
                 {link.name}
               </Link>
             ))}
-            
+
             <Link to="/cart" className="relative text-[#F6F6DB] hover:text-[#c19355] transition-colors">
               <ShoppingBag size={20} />
               {cartCount > 0 && (
@@ -98,9 +96,8 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${
-                  isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
-                }`}
+                className={`text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
+                  }`}
               >
                 {link.name}
               </Link>
