@@ -12,51 +12,55 @@ const Loader = () => {
 }
 
 const StyledWrapper = styled.div`
-  // background: #004B2A;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: #004A2B;
   
   .loader {
     position: relative;
-    margin: 210px auto;
-    width: 200px;
-    overflow: hidden;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     background: #c19355;
-    border-radius: 50px;
+    border-radius: 25px;
     transform-style: preserve-3d;
     mix-blend-mode: hard-light;
-  box-shadow:
-    /* outer shadow */
-    18px 18px 35px rgba(0, 0, 0, 0.35),
-    /* top-left highlight */
-    -12px -12px 25px rgba(255, 255, 255, 0.35),
-    /* inner bright highlight */
-    inset 10px 10px 12px rgba(255, 255, 255, 0.45),
-    /* inner depth shadow */
-    inset -10px -10px 15px rgba(0, 0, 0, 0.25);}
+    box-shadow:
+      /* outer shadow */
+      9px 9px 18px rgba(0, 0, 0, 0.35),
+      /* top-left highlight */
+      -6px -6px 12px rgba(255, 255, 255, 0.35),
+      /* inner bright highlight */
+      inset 5px 5px 6px rgba(255, 255, 255, 0.45),
+      /* inner depth shadow */
+      inset -5px -5px 8px rgba(0, 0, 0, 0.25);
+  }
 
   .circle {
     position: absolute;
-    inset: 35px;
+    inset: 18px;
     background: #c19355; /* INNER color */
     border-radius: 50%;
     transform-style: preserve-3d;
     box-shadow:
-      5px 5px 15px 0 #152b4a66,
-      inset 5px 5px 5px rgba(255, 255, 255, 0.55),
-      -6px -6px 10px rgba(255, 255, 255, 1);
+      3px 3px 8px 0 #152b4a66,
+      inset 3px 3px 3px rgba(255, 255, 255, 0.55),
+      -3px -3px 5px rgba(255, 255, 255, 1);
   }
 
   /* Gradient ring rotating */
   .circle::before {
     content: "";
     position: absolute;
-    inset: 4px;
+    inset: 2px;
     background: conic-gradient(
-      #f6f6db,
-      #f6f6db,
-      #000000
+      #004A2B,
+      #F6F6DB,
+      #004A2B
     );
-
     border-radius: 50%;
     animation: anim 2s linear infinite;
   }
@@ -65,7 +69,7 @@ const StyledWrapper = styled.div`
   .circle::after {
     content: "";
     position: absolute;
-    inset: 25px;
+    inset: 12px;
     filter: blur(0.9px);
     background: #c19355;
     border-radius: 50%;
@@ -79,6 +83,7 @@ const StyledWrapper = styled.div`
     100% {
       transform: rotate(360deg);
     }
-  }`;
+  }
+`;
 
 export default Loader;

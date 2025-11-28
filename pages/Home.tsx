@@ -113,14 +113,14 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="rounded-[30px] md:rounded-[60px] overflow-hidden shadow-lg">
+            <div className="rounded-[30px]  overflow-hidden shadow-lg">
               <img
                 src="/diningjpg.jpg"
                 alt="Bedroom detail"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="rounded-[30px] md:rounded-[60px] overflow-hidden shadow-lg sm:translate-y-10">
+            <div className="rounded-[30px]  overflow-hidden shadow-lg sm:translate-y-10">
               <img
                 src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80"
                 alt="Living room vignette"
