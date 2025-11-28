@@ -1,80 +1,87 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, User } from "lucide-react";
-import { useAuth } from "../context/AuthContext";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ShoppingBag } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { cartCount } = useCart();
 
-  const leftLinks = [
-    { name: "Home", path: "/" },
-    { name: "Collections", path: "/shop" },
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Services', path: '/services' },
+    { name: 'Contact', path: '/contact' },
   ];
 
-  const rightLinks = [
-    { name: "About", path: "/services" },
-    { name: "Journal", path: "/services" },
-    { name: "Contact", path: "/services" },
-  ];
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary text-white py-4 shadow-md">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled ? 'bg-[#004A2B]/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Left Links */}
-          <div className="hidden md:flex items-center gap-8">
-            {leftLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className="text-sm font-sans hover:text-secondary transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Logo Center */}
-          <Link to="/" className="text-3xl font-serif tracking-widest text-center w-32">
-            <img src="lunora-logo.png" alt="Lunera Logo" />
+          <Link to="/" className="text-2xl font-serif text-[#F6F6DB] tracking-wider">
+            <img src="/lunora-logo.png" className="w-32" alt="" />
           </Link>
 
-          {/* Right Links */}
-          <div className="hidden md:flex items-center gap-8">
-            {rightLinks.map((link) => (
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8"> 
+            {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-sm font-sans hover:text-secondary transition-colors"
+                className={`text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${
+                  isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
+                }`}
               >
                 {link.name}
               </Link>
             ))}
-            {isAuthenticated ? (
-              <button
-                onClick={() => navigate("/profile")}
-                className="text-sm font-sans hover:text-secondary transition-colors"
-              >
-                <User size={18} />
-              </button>
-            ) : (
-              <Link
-                to="/login"
-                className="text-sm font-sans hover:text-secondary transition-colors"
-              >
-                Login
-              </Link>
-            )}
+            
+            <Link to="/cart" className="relative text-[#F6F6DB] hover:text-[#c19355] transition-colors">
+              <ShoppingBag size={20} />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#c19355] text-[#004B2A] text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+
+            <Link
+              to="/login"
+              className="px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
+            >
+              Login
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-4">
+            <Link to="/cart" className="relative text-[#F6F6DB] hover:text-[#c19355] transition-colors">
+              <ShoppingBag size={20} />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#c19355] text-[#004B2A] text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-current"
+              className="text-[#F6F6DB] hover:text-[#c19355] transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -83,44 +90,32 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      {
-        isOpen && (
-          <div className="md:hidden bg-primary absolute top-full left-0 right-0 border-t border-primary-dark p-6 shadow-xl">
-            <div className="flex flex-col space-y-4 text-center">
-              {[...leftLinks, ...rightLinks].map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className="text-white font-sans text-lg hover:text-secondary transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              {isAuthenticated ? (
-                <button
-                  onClick={() => {
-                    navigate("/profile");
-                    setIsOpen(false);
-                  }}
-                  className="text-white font-sans text-lg hover:text-secondary transition-colors"
-                >
-                  Profile
-                </button>
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={() => setIsOpen(false)}
-                  className="text-white font-sans text-lg hover:text-secondary transition-colors"
-                >
-                  Login
-                </Link>
-              )}
-            </div>
+      {isOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#004A2B] border-t border-[#c19355]/20">
+          <div className="flex flex-col px-4 py-6 space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={`text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${
+                  isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              to="/login"
+              onClick={() => setIsOpen(false)}
+              className="text-center px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
+            >
+              Login
+            </Link>
           </div>
-        )
-      }
-    </nav >
+        </div>
+      )}
+    </nav>
   );
 };
 

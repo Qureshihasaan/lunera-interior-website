@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from '../components/Hero';
 import { SERVICES, PRODUCTS } from '../constants';
+import ProductCard from '../components/ProductCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,14 +89,14 @@ const Home: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="bg-[#F6F6DB] text-[#1a1a1a] manrope-para">
+    <div ref={containerRef} className="bg-[#F6F6DB] text-[#1a1a1a] manrope-para overflow-x-hidden">
       <Hero />
 
       <section ref={promiseRef} className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
         <div className="grid gap-14 md:grid-cols-2 items-center">
           <div>
             <p className="uppercase text-xs tracking-[0.5em] text-[#004A2B] mb-4">Our Promise</p>
-            <h2 className="text-4xl md:text-5xl  text-[#004A2B]">Make your dream home.</h2>
+            <h2 className="text-3xl md:text-5xl text-[#004A2B]">Make your dream home.</h2>
             <p className="text-lg text-[#004A2B] mt-6">
               Our multidisciplinary team creates layered spaces with thoughtful detailing, sculpted lighting and curated
               materials that feel personal and enduring.
@@ -111,15 +112,15 @@ const Home: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="rounded-[60px] overflow-hidden shadow-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="rounded-[30px] md:rounded-[60px] overflow-hidden shadow-lg">
               <img
                 src="/diningjpg.jpg"
                 alt="Bedroom detail"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="rounded-[60px] overflow-hidden shadow-lg translate-y-10">
+            <div className="rounded-[30px] md:rounded-[60px] overflow-hidden shadow-lg sm:translate-y-10">
               <img
                 src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80"
                 alt="Living room vignette"
@@ -136,7 +137,7 @@ const Home: React.FC = () => {
           <div className="flex flex-wrap gap-6 justify-between items-end mb-12">
             <div>
               <p className="uppercase text-xs tracking-[0.5em] text-[#C19355]">Collection</p>
-              <h2 className="text-4xl mt-3">Featured Pieces</h2>
+              <h2 className="text-3xl md:text-4xl mt-3">Featured Pieces</h2>
             </div>
             <Link
               to="/shop"
@@ -148,23 +149,7 @@ const Home: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {PRODUCTS.slice(0, 3).map((product) => (
-              <div key={product.id} className="group cursor-pointer">
-                <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden mb-6">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-xl font-medium mb-1">{product.name}</h3>
-                    <p className="text-sm text-[#F6F6DB]/70">{product.category}</p>
-                  </div>
-                  <span className="text-lg font-serif text-[#C19355]">${product.price}</span>
-                </div>
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
@@ -175,7 +160,7 @@ const Home: React.FC = () => {
           <div className="flex flex-wrap gap-6 justify-between items-end mb-16">
             <div>
               <p className="uppercase text-xs tracking-[0.5em] text-[#004A2B]">Our Expertise</p>
-              <h2 className="text-4xl  text-[#004A2B] mt-3">Design Services</h2>
+              <h2 className="text-3xl md:text-4xl text-[#004A2B] mt-3">Design Services</h2>
             </div>
             <Link
               to="/shop"
@@ -188,7 +173,7 @@ const Home: React.FC = () => {
             {SERVICES.map((service) => (
               <div
                 key={service.id}
-                className="service-card group p-8 rounded-[40px] border border-[#efe5d8] bg-[#004A2B] hover:bg-[#F6F6DB] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
+                className="service-card group p-8 rounded-[30px] md:rounded-[40px] border border-[#efe5d8] bg-[#004A2B] hover:bg-[#F6F6DB] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
               >
                 <div className="text-[#F6F6DB] mb-6 group-hover:text-[#004A2B] transition-colors">{getIcon(service.iconName)}</div>
                 <h3 className="text-2xl text-[#F6F6DB] group-hover:text-[#004A2B] mb-3 transition-colors">{service.title}</h3>
@@ -201,9 +186,9 @@ const Home: React.FC = () => {
 
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
-          <div ref={studioRef} className="bg-[#004A2B] rounded-[50px] p-10 shadow-2xl border border-[#f0e4d6]">
+          <div ref={studioRef} className="bg-[#004A2B] rounded-[30px] md:rounded-[50px] p-8 md:p-10 shadow-2xl border border-[#f0e4d6]">
             <p className="uppercase text-xs tracking-[0.5em] text-[#F6F6DB]">Studio</p>
-            <h3 className="text-4xl md:text-5xl  text-[#C19355] mt-4 mb-6">We curate calm, tactile spaces.</h3>
+            <h3 className="text-3xl md:text-5xl text-[#C19355] mt-4 mb-6">We curate calm, tactile spaces.</h3>
             <p className="text-[#F6F6DB] text-lg leading-relaxed mb-10">
               From concept to installation, we handle every detail: drafting, sourcing, site coordination and layered
               styling that tells your story.
@@ -225,10 +210,10 @@ const Home: React.FC = () => {
               Learn More <ArrowRight size={16} />
             </Link>
           </div>
-          <div ref={collaborateRef} className="relative bg-[#C19355] rounded-[90px] p-10 overflow-hidden text-[#1b1a17]">
-            <div className="max-w-md">
+          <div ref={collaborateRef} className="relative bg-[#C19355] rounded-[40px] md:rounded-[90px] p-8 md:p-10 overflow-hidden text-[#1b1a17]">
+            <div className="max-w-md relative z-10">
               <p className="uppercase text-xs tracking-[0.5em] text-[#F6F6DB]">Collaborate</p>
-              <h3 className="text-4xl text-[#004A2B] mt-4 mb-4">Interested in working with us?</h3>
+              <h3 className="text-3xl md:text-4xl text-[#004A2B] mt-4 mb-4">Interested in working with us?</h3>
               <p className="text-[#F6F6DB] mb-8 leading-relaxed">
                 If you have a passion for creating beautiful and functional spaces, visit our contact page and share the
                 details of your project. We respond within 2 business days.
@@ -243,11 +228,12 @@ const Home: React.FC = () => {
             <img
               src="/hero_1.jpg"
               alt="Styled vignette"
-              className="absolute bottom-0 right-6 w-36 md:w-44 rounded-t-[80px] border-4 border-white object-cover"
+              className="absolute bottom-0 right-6 w-24 md:w-44 rounded-t-[40px] md:rounded-t-[80px] border-4 border-white object-cover opacity-50 md:opacity-100"
             />
           </div>
         </div>
       </section>
+
     </div>
   );
 };
