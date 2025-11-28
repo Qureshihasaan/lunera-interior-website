@@ -113,16 +113,16 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="rounded-[30px]  overflow-hidden shadow-lg">
+            <div className="rounded-[10px]  overflow-hidden shadow-lg">
               <img
                 src="/diningjpg.jpg"
                 alt="Bedroom detail"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="rounded-[30px]  overflow-hidden shadow-lg sm:translate-y-10">
+            <div className="rounded-[10px]  overflow-hidden shadow-lg sm:translate-y-10">
               <img
-                src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80"
+                src="/home-sofa.jpeg"
                 alt="Living room vignette"
                 className="h-full w-full object-cover"
               />
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
               View All <ArrowRight size={16} />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {PRODUCTS.slice(0, 3).map((product) => (
               <ProductCard key={product.id} product={product} />
