@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-2xl font-serif text-[#F6F6DB] tracking-wider">
-            <img src="/lunora-logo.png" className="w-32" alt="" />
+            <img src="/lunora-logo.png" className="h-20" alt="" />
           </Link>
 
           {/* Desktop Menu */}
