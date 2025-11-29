@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { cartCount } = useCart();
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +19,25 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useGSAP(() => {
+    // Navbar entrance animation
+    gsap.from(navRef.current?.querySelector('.nav-logo'), {
+      y: -20,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+
+    gsap.from(navRef.current?.querySelectorAll('.nav-link'), {
+      // y: -20,
+      opacity: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      delay: 0.2,
+      ease: "power2.out"
+    });
+  }, { scope: navRef });
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -28,12 +50,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
+      ref={navRef}
       className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#004A2B]/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-serif text-[#F6F6DB] tracking-wider">
+          <Link to="/" className="nav-logo text-2xl font-serif text-[#F6F6DB] tracking-wider">
             <img src="/lunora-logo.png" className="h-12" alt="" />
           </Link>
 
@@ -43,14 +66,14 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
+                className={`nav-link text-sm uppercase tracking-widest hover:text-[#c19355] transition-colors ${isActive(link.path) ? 'text-[#c19355]' : 'text-[#F6F6DB]'
                   }`}
               >
                 {link.name}
               </Link>
             ))}
 
-            <Link to="/cart" className="relative text-[#F6F6DB] hover:text-[#c19355] transition-colors">
+            <Link to="/cart" className="nav-link relative text-[#F6F6DB] hover:text-[#c19355] transition-colors">
               <ShoppingBag size={20} />
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[#c19355] text-[#004B2A] text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
@@ -61,7 +84,7 @@ const Navbar: React.FC = () => {
 
             <Link
               to="/login"
-              className="px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
+              className="nav-link px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
             >
               Login
             </Link>

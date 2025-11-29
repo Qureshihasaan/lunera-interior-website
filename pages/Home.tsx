@@ -34,11 +34,19 @@ const Home: React.FC = () => {
   const collaborateRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Hero Animation (assuming Hero component handles its own or we animate the container)
-    // We'll animate the main container entrance for now if Hero doesn't have refs exposed
+    // Promise Section - text and images
+    gsap.from(promiseRef.current?.querySelector('p'), {
+      scrollTrigger: {
+        trigger: promiseRef.current,
+        start: "top 80%",
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    });
 
-    // Promise Section
-    gsap.from(promiseRef.current, {
+    gsap.from(promiseRef.current?.querySelector('h2'), {
       scrollTrigger: {
         trigger: promiseRef.current,
         start: "top 80%",
@@ -46,10 +54,48 @@ const Home: React.FC = () => {
       y: 50,
       opacity: 0,
       duration: 1,
+      delay: 0.2,
       ease: "power3.out"
     });
 
-    // Services Section
+    gsap.from(promiseRef.current?.querySelectorAll('.feature-item'), {
+      scrollTrigger: {
+        trigger: promiseRef.current,
+        start: "top 70%",
+      },
+      x: -30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: "power2.out"
+    });
+
+    gsap.from(promiseRef.current?.querySelectorAll('.promise-image'), {
+      scrollTrigger: {
+        trigger: promiseRef.current,
+        start: "top 70%",
+      },
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    // Featured Products Section
+    gsap.from(".product-card", {
+      scrollTrigger: {
+        trigger: ".product-section",
+        start: "top 75%",
+      },
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    // Services Section - Fixed opacity bug
     gsap.from(".service-card", {
       scrollTrigger: {
         trigger: servicesRef.current,
@@ -103,7 +149,7 @@ const Home: React.FC = () => {
             </p>
             <div className="mt-10 grid gap-4">
               {featureList.map((item) => (
-                <div key={item} className="flex items-center gap-3 text-[#004A2B]">
+                <div key={item} className="feature-item flex items-center gap-3 text-[#004A2B]">
                   <div className="w-8 h-8 rounded-full bg-[#F6F6DB] border border-[#F6F6DB] flex items-center justify-center text-[#004A2B]">
                     <Check size={18} />
                   </div>
@@ -113,14 +159,14 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="rounded-[10px]  overflow-hidden shadow-lg">
+            <div className="promise-image rounded-[10px]  overflow-hidden shadow-lg">
               <img
                 src="/diningjpg.jpg"
                 alt="Bedroom detail"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="rounded-[10px]  overflow-hidden shadow-lg sm:translate-y-10">
+            <div className="promise-image rounded-[10px]  overflow-hidden shadow-lg sm:translate-y-10">
               <img
                 src="/home-sofa.jpeg"
                 alt="Living room vignette"
@@ -132,7 +178,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-20 bg-[#004A2B] text-[#F6F6DB]">
+      <section className="product-section py-20 bg-[#004A2B] text-[#F6F6DB]">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex flex-wrap gap-6 justify-between items-end mb-12">
             <div>
@@ -149,7 +195,9 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {PRODUCTS.slice(0, 3).map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <div key={product.id} className="product-card">
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         </div>
