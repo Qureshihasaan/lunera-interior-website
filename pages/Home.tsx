@@ -173,7 +173,7 @@ const Home: React.FC = () => {
             {SERVICES.map((service) => (
               <div
                 key={service.id}
-                className="service-card group p-8 rounded-[30px] md:rounded-[40px] border border-[#efe5d8] bg-[#004A2B] hover:bg-[#F6F6DB] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
+                className="service-card group p-8 rounded-[10px] md:rounded-[10px] border border-[#efe5d8] bg-[#004A2B] hover:bg-[#F6F6DB] hover:-translate-y-1 hover:shadow-lg hover:border-secondary/30 transition-all duration-300"
               >
                 <div className="text-[#F6F6DB] mb-6 group-hover:text-[#004A2B] transition-colors">{getIcon(service.iconName)}</div>
                 <h3 className="text-2xl text-[#F6F6DB] group-hover:text-[#004A2B] mb-3 transition-colors">{service.title}</h3>
@@ -186,7 +186,7 @@ const Home: React.FC = () => {
 
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
-          <div ref={studioRef} className="bg-[#004A2B] rounded-[30px] md:rounded-[50px] p-8 md:p-10 shadow-2xl border border-[#f0e4d6]">
+          <div ref={studioRef} className="bg-[#004A2B] rounded-[10px] md:rounded-[10px] p-8 md:p-10 shadow-2xl border border-[#f0e4d6]">
             <p className="uppercase text-xs tracking-[0.5em] text-[#F6F6DB]">Studio</p>
             <h3 className="text-3xl md:text-5xl text-[#C19355] mt-4 mb-6">We curate calm, tactile spaces.</h3>
             <p className="text-[#F6F6DB] text-lg leading-relaxed mb-10">
@@ -210,7 +210,7 @@ const Home: React.FC = () => {
               Learn More <ArrowRight size={16} />
             </Link>
           </div>
-          <div ref={collaborateRef} className="relative bg-[#C19355] rounded-[40px] md:rounded-[90px] p-8 md:p-10 overflow-hidden text-[#1b1a17]">
+          <div ref={collaborateRef} className="relative bg-[#C19355] rounded-[10px] md:rounded-[10px] p-8 md:p-10 overflow-hidden text-[#1b1a17]">
             <div className="max-w-md relative z-10">
               <p className="uppercase text-xs tracking-[0.5em] text-[#F6F6DB]">Collaborate</p>
               <h3 className="text-3xl md:text-4xl text-[#004A2B] mt-4 mb-4">Interested in working with us?</h3>

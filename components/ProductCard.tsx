@@ -18,9 +18,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, discount }) => {
   };
 
   return (
-    <div className="group flex flex-col bg-[#004A2B]">
+    <div className="group flex flex-col bg-[#004A2B] ">
       <Link to={`/product/${product.id}`} className="block">
-        <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
+        <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-[10px] mb-4">
           <img
             src={product.image}
             alt={product.name}
