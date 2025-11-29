@@ -34,10 +34,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, discount }) => {
         </div>
 
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-lg font-sans text-[#c19355] font-medium max-w-[70%] leading-tight">
+          <h3 className="text-lg font-sans text-[#F6F6DB] font-medium max-w-[70%] leading-tight">
             {product.name}
           </h3>
-          <p className="text-lg font-sans text-accent">
+          <p className="text-lg font-sans text-[#F6F6DB]">
             ${product.price.toFixed(2)}
           </p>
         </div>
@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, discount }) => {
 
       <button 
         onClick={handleAddToCart}
-        className="w-full py-3 bg-[#c19355] text-white text-sm uppercase tracking-widest hover:bg-[#d4a86a] transition-colors"
+        className="w-full py-3 bg-[#F6F6DB] text-[#004A2B] text-sm uppercase tracking-widest hover:bg-[#d4a86a] transition-colors"
       >
         Add to Cart
       </button>
