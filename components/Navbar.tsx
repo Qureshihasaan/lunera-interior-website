@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -9,7 +10,9 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { cartCount } = useCart();
+  const { user, logout } = useAuth();
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -47,11 +50,18 @@ const Navbar: React.FC = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+  const isProfilePage = location.pathname === '/profile';
+
+  const handleLogout = () => {
+    logout();
+    setIsOpen(false);
+    navigate('/login');
+  };
 
   return (
     <nav
       ref={navRef}
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#004A2B]/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled || isProfilePage ? 'bg-[#004A2B]/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,12 +92,21 @@ const Navbar: React.FC = () => {
               )}
             </Link>
 
-            <Link
-              to="/login"
-              className="nav-link px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
-            >
-              Login
-            </Link>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="nav-link px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="nav-link px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -125,13 +144,22 @@ const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/login"
-              onClick={() => setIsOpen(false)}
-              className="text-center px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
-            >
-              Login
-            </Link>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="text-center px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest w-full"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className="text-center px-6 py-2 border border-[#c19355] text-[#c19355] hover:bg-[#c19355] hover:text-[#004B2A] transition-all text-sm uppercase tracking-widest"
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       )}

@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
           <div className="footer-section space-y-6">
             <h3 className="text-sm font-bold uppercase tracking-widest text-secondary">About Us</h3>
             <div className="space-y-2 text-gray-400 font-sans text-sm leading-relaxed">
-              <p>Lunera Home Decor Design</p>
+              <p>Lunora Home Decor Design</p>
               <p>425 1f Kaori Road, Suite 42375</p>
               <p>All rights reserved.</p>
             </div>
