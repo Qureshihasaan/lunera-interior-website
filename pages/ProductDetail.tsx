@@ -98,7 +98,7 @@ const ProductDetail: React.FC = () => {
   const handleAddToCart = () => {
     addToCart(product);
     // You might want to add a toast notification here
-    alert(`${product.name} added to cart!`);
+    // alert(`${product.name} added to cart!`);
   };
 
   return (
