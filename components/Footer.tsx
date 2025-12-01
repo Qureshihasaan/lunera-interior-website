@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="bottom-bar pt-8 border-t border-primary-dark text-center">
           <p className="text-xs uppercase tracking-widest text-gray-500">
-            Designed by Talha Qureshi
+            
           </p>
         </div>
       </div>
